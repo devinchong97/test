@@ -98,7 +98,7 @@ class FacebookAdPanel {
             const row = document.createElement('tr');
             row.className = 'hover:bg-gray-50';
             
-            const statusClass = account.status === 'Active' ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100';
+            const statusClass = (account.status && account.status.includes('Active')) ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100';
             
             row.innerHTML = `
                 <td class="border border-gray-200 px-4 py-3 font-mono text-sm">${account.id}</td>
@@ -110,6 +110,9 @@ class FacebookAdPanel {
                         ${account.status}
                     </span>
                 </td>
+                <td class="border border-gray-200 px-4 py-3">${account.spending || '0.00 EUR'}</td>
+                <td class="border border-gray-200 px-4 py-3 text-sm">${account.creation_time || 'Unknown'}</td>
+                <td class="border border-gray-200 px-4 py-3 text-sm">${account.account_type || 'Unknown'}</td>
                 <td class="border border-gray-200 px-4 py-3 text-center">
                     <button 
                         class="recharge-btn bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm flex items-center mx-auto"
