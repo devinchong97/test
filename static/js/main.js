@@ -50,7 +50,7 @@ class FacebookAdPanel {
         this.hideError();
         
         try {
-            const response = await fetch('/api/accounts');
+            const response = await fetch(`${window.location.origin}/api/accounts`);
             const data = await response.json();
             
             if (data.success) {
@@ -171,7 +171,7 @@ class FacebookAdPanel {
         `;
         
         try {
-            const response = await fetch('/api/recharge', {
+            const response = await fetch(`${window.location.origin}/api/recharge`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
