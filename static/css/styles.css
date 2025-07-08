@@ -1,0 +1,29 @@
+/* Additional custom styles if needed */
+.table-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.account-row:hover {
+    background-color: #f8fafc;
+}
+
+.recharge-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    table {
+        font-size: 0.875rem;
+    }
+    
+    .recharge-modal {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+}
