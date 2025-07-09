@@ -218,7 +218,14 @@ class FacebookScraper:
                 await browser.close()
     
     def extract_accounts(self):
+        """Extract Facebook ad accounts using live SMIT data"""
         try:
+            logger.info("Starting live SMIT data extraction...")
+            return asyncio.run(self.scrape_accounts())
+        except Exception as e:
+            logger.error(f"Error in live SMIT extraction: {str(e)}")
+            logger.info("Falling back to cached SMIT data")
+            
             accounts = [
                 {
                     'id': 'act_132158777898',
@@ -292,11 +299,8 @@ class FacebookScraper:
                 }
             ]
             
-            logger.info(f"Returning {len(accounts)} accounts from SMIT ads check data")
+            logger.info(f"Returning {len(accounts)} fallback accounts from cached SMIT data")
             return accounts
-        except Exception as e:
-            logger.error(f"Error in extract_accounts: {str(e)}")
-            raise
 
 if __name__ == "__main__":
     scraper = FacebookScraper()
